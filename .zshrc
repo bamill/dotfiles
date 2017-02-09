@@ -94,5 +94,5 @@ alias no="norminette -R CheckForbiddenSourceHeader"
 alias sg="gcc -Wall -Wextra -Werror"
 alias 42FileChecker='sh ~/42FileChecker/42FileChecker.sh'
 
-[[ ! ( -f /Volumes/Storage/goinfre/bmiller/homebrew ) ]] && mkdir ~/goinfre/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/goinfre/homebrew && brew update && brew install valgrind && brew install emacs --with-cocoa && brew install ctags && brew install global && brew install surfraw && brew linkaps emacs
+[[ ! ( -f /Volumes/Storage/goinfre/bmiller/homebrew ) ]] && mkdir ~/goinfre/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/goinfre/homebrew && brew update && brew install valgrind && brew install emacs --with-cocoa && brew install ctags && brew install global && brew install surfraw && brew linkapps emacs
 
