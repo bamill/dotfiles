@@ -173,7 +173,10 @@
        (menu-bar-mode 0)
        (tool-bar-mode 0)
        (column-number-mode 0)
-       (set-face-attribute 'default nil :family "Inconsolata" :height 105)
+       (cond ((>= (x-display-pixel-height) 1080)
+              (set-face-attribute 'default nil :family "Inconsolata" :height 125))
+              (t
+               (set-face-attribute 'default nil :family "Inconsolata" :height 105)))
 
        ;; mew
        ;; (autoload 'mew "mew" nil t)
