@@ -267,7 +267,7 @@ emms-streams)."
                                (if (listp (emms-track-get track 'metadata))
                                    (car (emms-track-get track 'metadata))
                                  "")))
-           (emms-track-updated track)
+;    Updated: 2017/02/16 17:47:14 by bmiller          ###   ########.fr        ;
            ))
 
        ;; bbdb
@@ -460,6 +460,10 @@ emms-streams)."
         )
 
        (load-file "~/.emacs.d/init.el")
+
+       (setq helm-locate-fuzzy-match nil)
+       (setq helm-locate-command "mdfind -name %s %s")
+       (setq helm-man-format-switches "%s")
 
        (split-window-right)
        (other-window 1)
