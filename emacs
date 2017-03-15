@@ -168,15 +168,19 @@
 
        ;; (require 'color-theme)
        ;; (color-theme-solarized)
-       (load-theme 'solarized-dark)
-       (scroll-bar-mode 0)
-       (menu-bar-mode 0)
-       (tool-bar-mode 0)
+       (when (window-system)
+	 (progn
+	      (load-theme 'solarized-dark)
+	      (scroll-bar-mode 0)
+	      (menu-bar-mode 0)
+          (cond ((>= (x-display-pixel-height) 1080)
+                 (set-face-attribute 'default nil :family "Inconsolata" :height 125))
+                (t
+                 (set-face-attribute 'default nil :family "Inconsolata" :height 105)))
+	      (if (functionp 'tool-bar-mode) (tool-bar-mode 0))))
+
        (column-number-mode 0)
-       (cond ((>= (x-display-pixel-height) 1080)
-              (set-face-attribute 'default nil :family "Inconsolata" :height 125))
-              (t
-               (set-face-attribute 'default nil :family "Inconsolata" :height 105)))
+
 
        ;; mew
        ;; (autoload 'mew "mew" nil t)
@@ -404,7 +408,6 @@ emms-streams)."
        (require 'helm-config)
 
        (scroll-bar-mode 0)
-       (tool-bar-mode 0)
        (fringe-mode 0)
 
        (require 'color-theme)
