@@ -29,7 +29,7 @@ fi
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI with non-daemon as alternate
-export PATH=/home/abunai/.gem/ruby/2.3.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.3.0/bin:$PATH
 export FT42_UID=ab5a58157ad2d60a024faa8e9e3ee8414db8a815a469a96a7005cc77407f81e8
 export FT42_SECRET=300c9739aba5cdb33c25a5c38134625c92979a3aa19f24e6b299ea20fd95d7d2
 export GTAGSLIBPATH=$HOME/.gtags/

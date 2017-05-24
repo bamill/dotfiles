@@ -125,8 +125,8 @@ fi
 alias emax="emacsclient -t"                      # used to be "emacs -nw"
 alias semac="sudo emacsclient -t"                # used to be "sudo emacs -nw"
 alias emacsc="emacsclient -c -a emacs"           # new - opens the GUI with alternate non-daemon
-alias 42FileChecker="/home/abunai/42/42FileChecker/42FileChecker.sh"
-eval `dircolors /home/abunai/.dir_colors/dircolors`
+alias 42FileChecker="$HOME/42/42FileChecker/42FileChecker.sh"
+eval `dircolors $HOME/.dir_colors/dircolors`
 
 # alt-h to invoke the man page for a command
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
