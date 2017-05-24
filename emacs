@@ -267,7 +267,7 @@ emms-streams)."
                                (if (listp (emms-track-get track 'metadata))
                                    (car (emms-track-get track 'metadata))
                                  "")))
-;    Updated: 2017/02/16 17:47:14 by bmiller          ###   ########.fr        ;
+;    Updated: 2017/05/23 20:34:20 by bmiller          ###   ########.fr        ;
            ))
 
        ;; bbdb
@@ -464,6 +464,17 @@ emms-streams)."
        (setq helm-locate-fuzzy-match nil)
        (setq helm-locate-command "mdfind -name %s %s")
        (setq helm-man-format-switches "%s")
+
+       (setq python-shell-exec-path '("/nfs/2016/b/bmiller/goinfre/homebrew/bin"))
+       (setq python-shell-interpreter "python3")
+       (defun python-shell-completion-native-try ()
+         "Return non-nil if can trigger native completion."
+         (let ((python-shell-completion-native-enable t)
+               (python-shell-completion-native-output-timeout
+                python-shell-completion-native-try-output-timeout))
+           (python-shell-completion-native-get-completions
+            (get-buffer-process (current-buffer))
+            nil "_")))
 
        (split-window-right)
        (other-window 1)
