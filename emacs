@@ -411,6 +411,15 @@ emms-streams)."
 
        (setq Man-notify-method 'aggressive)
 
+
+       (use-package pdf-tools
+         :ensure t
+         :config
+         (custom-set-variables
+          '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+         (setq pdf-info-epdfinfo-program "/nfs/2016/b/bmiller/goinfre/homebrew/bin/epdfinfo"))
+       (pdf-tools-install)
+
        (require 'color-theme)
        (color-theme-initialize)
        (setq color-theme-is-global t)
@@ -455,7 +464,7 @@ emms-streams)."
         '(large-file-warning-threshold nil)
         '(package-selected-packages
           (quote
-           (helm-youtube zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+           (helm-youtube zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu pdf-tools))))
        (custom-set-faces
         ;; custom-set-faces was added by Custom.
         ;; If you edit it by hand, you could mess it up, so be careful.
