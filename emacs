@@ -151,11 +151,11 @@
 
        (helm-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
        ;; PACKAGE: helm-descbinds                      ;;
        ;;                                              ;;
        ;; GROUP: Convenience -> Helm -> Helm Descbinds ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
        (require 'helm-descbinds)
        (helm-descbinds-mode)
 
@@ -406,24 +406,62 @@ emms-streams)."
        ;; (ido-mode)
        (require 'helm-config)
 
-       (scroll-bar-mode 0)
+       (when (window-system)
+         (progn
+                  (use-package pdf-tools
+                    :ensure t
+                    :config
+                    (custom-set-variables
+                     '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+                    (setq pdf-info-epdfinfo-program "/nfs/2016/b/bmiller/goinfre/homebrew/bin/epdfinfo"))
+                  (pdf-tools-install)
+
+                  (use-package all-the-icons)
+                  (require 'all-the-icons)
+                  (all-the-icons-install-fonts t)
+
+                  (use-package doom-themes)
+
+                  (require 'doom-themes)
+                  ;;; Settings (defaults)
+                  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+                        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+                  (load-theme 'doom-one t) ;; or doom-molokai, etc.
+
+                  ;;; OPTIONAL
+                  ;; brighter source buffers (that represent files)
+                  (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
+                  ;; ...if you use auto-revert-mode
+                  (add-hook 'after-revert-hook #'doom-buffer-mode-maybe)
+                  ;; And you can brighten other buffers (unconditionally) with:
+                  (add-hook 'ediff-prepare-buffer-hook #'doom-buffer-mode)
+
+                  ;; brighter minibuffer when active
+                  (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
+
+                  ;; Enable custom neotree theme
+                  (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+
+                  ;; Enable nlinum line highlighting
+                  (doom-themes-nlinum-config)   ; requires nlinum and hl-line-mode
+
+                  ;;       (require 'color-theme)
+                  ;;       (color-theme-initialize)
+                  ;;       (setq color-theme-is-global t)
+                  ;;       (color-theme-solarized)
+           (scroll-bar-mode 0)
+           (menu-bar-mode 0)
+           (cond ((>= (x-display-pixel-height) 1080)
+                  (set-face-attribute 'default nil :family "FiraMono Regular" :height 125))
+                 (t
+                  (set-face-attribute 'default nil :family "FiraMono Regular" :height 105)))
+           (if (functionp 'tool-bar-mode) (tool-bar-mode 0))))
+
+       (column-number-mode 0)
        (fringe-mode 0)
 
        (setq Man-notify-method 'aggressive)
-
-
-       (use-package pdf-tools
-         :ensure t
-         :config
-         (custom-set-variables
-          '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
-         (setq pdf-info-epdfinfo-program "/nfs/2016/b/bmiller/goinfre/homebrew/bin/epdfinfo"))
-       (pdf-tools-install)
-
-       (require 'color-theme)
-       (color-theme-initialize)
-       (setq color-theme-is-global t)
-       (color-theme-solarized)
 
        ;; powerline
        ;; (require 'powerline)
@@ -464,7 +502,7 @@ emms-streams)."
         '(large-file-warning-threshold nil)
         '(package-selected-packages
           (quote
-           (helm-youtube zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu pdf-tools))))
+           (helm-youtube zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu pdf-tools all-the-icons doom-themes))))
        (custom-set-faces
         ;; custom-set-faces was added by Custom.
         ;; If you edit it by hand, you could mess it up, so be careful.

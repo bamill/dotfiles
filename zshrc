@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# set gh token
+export HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.ghtoken)
 # Path to your oh-my-zsh installation.
 export ZSH=/nfs/2016/b/bmiller/.oh-my-zsh
 
@@ -78,8 +80,6 @@ export LIBDIR=/nfs/2016/b/bmiller/42_projects/lib
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-export FT42_UID=ab5a58157ad2d60a024faa8e9e3ee8414db8a815a469a96a7005cc77407f81e8
-export FT42_SECRET=300c9739aba5cdb33c25a5c38134625c92979a3aa19f24e6b299ea20fd95d7d2
 export PATH=/nfs/2016/b/bmiller/goinfre/homebrew/bin:/nfs/2016/b/bmiller/.gem/ruby/2.0.0/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -94,5 +94,12 @@ alias no="norminette -R CheckForbiddenSourceHeader"
 alias sg="gcc -Wall -Wextra -Werror"
 alias 42FileChecker='sh ~/42FileChecker/42FileChecker.sh'
 
-[[ ! ( -f /Volumes/Storage/goinfre/bmiller/homebrew ) ]] && mkdir ~/goinfre/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/goinfre/homebrew && brew update && brew install valgrind && brew install python3 && brew install emacs --with-cocoa && brew install ctags && brew install global && brew install surfraw && brew install gnu-sed && ln -s ~/goinfre/homebrew/bin/gsed ~/goinfre/homebrew/bin/sed && brew install ag && brew install poppler && brew tap dunn/emacs && brew install pdf-tools &&  brew install mpv && brew cask install hammerspoon && brew linkapps emacs && brew linkapps hammerspoon && pip3 install --upgrade pip setuptools wheel
+[[ ! ( -f /Volumes/Storage/goinfre/bmiller/homebrew ) ]] && mkdir ~/goinfre/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/goinfre/homebrew && brew update && brew install valgrind && brew install python3 && brew install emacs --with-cocoa && brew install ctags && brew install global && brew install surfraw && brew install gnu-sed && ln -s ~/goinfre/homebrew/bin/gsed ~/goinfre/homebrew/bin/sed && brew install ag && brew install poppler && brew tap dunn/emacs && brew install pdf-tools && brew install mpv && brew cask install hammerspoon
 
+pip3 install --upgrade pip setuptools wheel
+brew tap caskroom/fonts
+brew cask install font-fira-mono
+brew cask install font-fira-code
+brew cask install font-fira-sans
+brew linkapps emacs
+brew linkapps hammerspoon
