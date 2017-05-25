@@ -271,7 +271,6 @@ emms-streams)."
                                (if (listp (emms-track-get track 'metadata))
                                    (car (emms-track-get track 'metadata))
                                  "")))
-;    Updated: 2017/05/23 20:34:20 by bmiller          ###   ########.fr        ;
            ))
 
        ;; bbdb
@@ -409,6 +408,8 @@ emms-streams)."
 
        (scroll-bar-mode 0)
        (fringe-mode 0)
+
+       (setq Man-notify-method 'aggressive)
 
        (require 'color-theme)
        (color-theme-initialize)
